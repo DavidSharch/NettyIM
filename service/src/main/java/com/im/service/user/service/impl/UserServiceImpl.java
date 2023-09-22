@@ -3,8 +3,8 @@ package com.im.service.user.service.impl;
 import com.im.common.enums.UserErrorCode;
 import com.im.service.user.dao.UserEntity;
 import com.im.service.user.dao.mapper.UserMapper;
-import com.im.service.user.model.req.DeleteUserReq;
-import com.im.service.user.model.req.ImportUserReq;
+import com.im.service.user.model.req.*;
+import com.im.service.user.model.resp.GetUserInfoResp;
 import com.im.service.user.model.resp.ImportUserResp;
 import com.im.service.user.service.UserService;
 import lombok.extern.log4j.Log4j2;
@@ -60,5 +60,20 @@ public class UserServiceImpl implements UserService {
         }
         int update = userMapper.updateUserDelFlagByIds(ids);
         return ResponseEntity.ok(update);
+    }
+
+    @Override
+    public ResponseEntity<GetUserInfoResp> getUserInfo(GetUserInfoReq req) {
+        return null;
+    }
+
+    @Override
+    public ResponseEntity modifyUserInfo(ModifyUserInfoReq req) {
+        return null;
+    }
+
+    @Override
+    public ResponseEntity login(LoginReq req) {
+        return null;
     }
 }

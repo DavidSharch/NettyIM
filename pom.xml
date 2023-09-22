@@ -14,6 +14,9 @@
     <modules>
         <module>common</module>
         <module>service</module>
+        <module>im-tcp</module>
+        <!--        <module>im-codec</module>-->
+        <!--        <module>im-message-store</module>-->
     </modules>
 
     <parent>
@@ -45,34 +48,38 @@
     </properties>
 
     <dependencies>
+        <!-- 日志框架 -->
+<!--        <dependency>-->
+<!--            <groupId>ch.qos.logback</groupId>-->
+<!--            <artifactId>logback-classic</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>ch.qos.logback</groupId>-->
+<!--            <artifactId>logback-core</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>ch.qos.logback</groupId>-->
+<!--            <artifactId>logback-access</artifactId>-->
+<!--        </dependency>-->
+
         <!-- fastjson -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
         </dependency>
+
         <!-- lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
 
-
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-            <version>2.9.2</version>
-        </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-            <version>2.9.2</version>
-        </dependency>
     </dependencies>
 
 
     <dependencyManagement>
         <dependencies>
-<!--            &lt;!&ndash; protostuff依赖包 begin &ndash;&gt;-->
+            <!-- protostuff依赖包 begin -->
 <!--            <dependency>-->
 <!--                <groupId>com.dyuproject.protostuff</groupId>-->
 <!--                <artifactId>protostuff-api</artifactId>-->
@@ -88,7 +95,14 @@
 <!--                <artifactId>protostuff-runtime</artifactId>-->
 <!--                <version>${protostuff-api}</version>-->
 <!--            </dependency>-->
-<!--            &lt;!&ndash; protostuff依赖包 end &ndash;&gt;-->
+            <!-- protostuff依赖包 end -->
+
+            <!-- commons -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${apache.commons.version}</version>
+            </dependency>
 
             <!-- fastjson -->
             <dependency>
@@ -97,12 +111,12 @@
                 <version>${fastjson.version}</version>
             </dependency>
 
-<!--            &lt;!&ndash; redis &ndash;&gt;-->
-<!--            <dependency>-->
-<!--                <groupId>org.springframework.boot</groupId>-->
-<!--                <artifactId>spring-boot-starter-data-redis</artifactId>-->
-<!--                <version>${springboot.version}</version>-->
-<!--            </dependency>-->
+            <!-- redis -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-redis</artifactId>
+                <version>${springboot.version}</version>
+            </dependency>
 
             <!-- rabbitmq -->
 <!--            <dependency>-->
@@ -123,6 +137,12 @@
                 <version>${mybatis-plus.version}</version>
             </dependency>
 
+            <!--            <dependency>-->
+            <!--                <groupId>com.baomidou</groupId>-->
+            <!--                <artifactId>mybatis-plus-generator</artifactId>-->
+            <!--                <version>${mybatis-plus.version}</version>-->
+            <!--            </dependency>-->
+
             <!-- 参数校验 -->
             <dependency>
                 <groupId>org.hibernate</groupId>
@@ -130,19 +150,19 @@
                 <version>${hibernate-validator.version}</version>
             </dependency>
 
-<!--            &lt;!&ndash; redisson &ndash;&gt;-->
-<!--            <dependency>-->
-<!--                <groupId>org.redisson</groupId>-->
-<!--                <artifactId>redisson</artifactId>-->
-<!--                <version>${redisson.version}</version>-->
-<!--            </dependency>-->
+            <!-- redisson -->
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson</artifactId>
+                <version>${redisson.version}</version>
+            </dependency>
 
-<!--            &lt;!&ndash; yaml &ndash;&gt;-->
-<!--            <dependency>-->
-<!--                <groupId>org.yaml</groupId>-->
-<!--                <artifactId>snakeyaml</artifactId>-->
-<!--                <version>${snakeyaml.version}</version>-->
-<!--            </dependency>-->
+            <!-- yaml -->
+            <dependency>
+                <groupId>org.yaml</groupId>
+                <artifactId>snakeyaml</artifactId>
+                <version>${snakeyaml.version}</version>
+            </dependency>
 
             <!-- hutool -->
             <dependency>
@@ -151,27 +171,27 @@
                 <version>${hutool.version}</version>
             </dependency>
 
-<!--            <dependency>-->
-<!--                <groupId>org.apache.httpcomponents</groupId>-->
-<!--                <artifactId>httpclient</artifactId>-->
-<!--                <version>${apache.httpclient.version}</version>-->
-<!--            </dependency>-->
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${apache.httpclient.version}</version>
+            </dependency>
 
-<!--            &lt;!&ndash;  zkClient &ndash;&gt;-->
+            <!--  zkClient -->
 <!--            <dependency>-->
 <!--                <groupId>com.github.sgroschupf</groupId>-->
 <!--                <artifactId>zkclient</artifactId>-->
 <!--                <version>${zkClient.version}</version>-->
 <!--            </dependency>-->
 
-<!--            &lt;!&ndash; netty &ndash;&gt;-->
-<!--            <dependency>-->
-<!--                <groupId>io.netty</groupId>-->
-<!--                <artifactId>netty-all</artifactId>-->
-<!--                <version>${netty.version}</version>-->
-<!--            </dependency>-->
+            <!-- netty -->
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-all</artifactId>
+                <version>${netty.version}</version>
+            </dependency>
 
-<!--            &lt;!&ndash; feign调用依赖 &ndash;&gt;-->
+            <!-- feign调用依赖 -->
 <!--            <dependency>-->
 <!--                <groupId>com.netflix.feign</groupId>-->
 <!--                <artifactId>feign-core</artifactId>-->
@@ -182,7 +202,6 @@
 <!--                <artifactId>feign-jackson</artifactId>-->
 <!--                <version>${feign.version}</version>-->
 <!--            </dependency>-->
-
         </dependencies>
     </dependencyManagement>
 
