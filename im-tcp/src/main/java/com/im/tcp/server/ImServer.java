@@ -1,6 +1,8 @@
 package com.im.tcp.server;
 
+import com.im.tcp.codec.MessageDecoder;
 import com.im.tcp.config.IMServerConfig;
+import com.im.tcp.handler.NettyServerHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
@@ -40,10 +42,11 @@ public class ImServer {
                 .childHandler(new ChannelInitializer<SocketChannel>() {
                     @Override
                     protected void initChannel(SocketChannel ch) throws Exception {
-//                        ch.pipeline().addLast(new MessageDecoder());
+                        ch.pipeline().addLast(new MessageDecoder());
 //                        ch.pipeline().addLast(new MessageEncoder());
 //                        ch.pipeline().addLast(new HeartBeatHandler(config.getHeartBeatTime()));
-//                        ch.pipeline().addLast(new NettyServerHandler(config.getBrokerId(),config.getLogicUrl()));
+                        //ch.pipeline().addLast(new NettyServerHandler(config.getBrokerId(),config.getLogicUrl()));
+                        ch.pipeline().addLast(new NettyServerHandler());
                     }
                 });
     }
