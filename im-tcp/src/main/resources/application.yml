@@ -1,1 +1,7 @@
-
+IMServer:
+  tcpPort: 9000
+  webSocketPort: 19000
+  bossThreadSize: 1
+  workThreadSize: 8
+  heartBeatTime: 20000 #心跳超时时间 单位毫秒
+  loginModel: 3
