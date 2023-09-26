@@ -17,10 +17,15 @@ public class UserSession {
      */
     private Integer clientType;
 
-    //sdk 版本号
+    /**
+     * sdk 版本号
+     */
     private Integer version;
 
-    //连接状态 1=在线 2=离线
+    /**
+     * 连接状态 1=在线 2=离线
+     * ConnectStatusEnum
+     */
     private Integer connectState;
 
     private Integer brokerId;
