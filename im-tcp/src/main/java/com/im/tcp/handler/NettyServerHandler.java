@@ -5,6 +5,8 @@ import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 import com.im.common.enums.ConnectStatusEnum;
 import com.im.common.enums.Constants;
+import com.im.common.enums.command.GroupEventCommand;
+import com.im.common.enums.command.MessageCommand;
 import com.im.common.enums.command.SystemCommand;
 import com.im.common.model.UserSession;
 import com.im.tcp.message.Message;
@@ -48,8 +50,17 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<Message> {
                     msg.getMessageHeader().getClientType(), msg.getMessageHeader().getImei(),
                     (NioSocketChannel) ctx.channel()
             );
+
+            // todo 发布上线消息
+        } else if (command == SystemCommand.LOGOUT.getCommand()) {
+            SessionSocketHolder.removeUserSession((NioSocketChannel) ctx.channel(), false);
+        } else if (command == SystemCommand.PING.getCommand()){
+            ctx.channel().attr(AttributeKey.valueOf(Constants.ReadTime)).set(System.currentTimeMillis());
+        }else if(command == MessageCommand.MSG_P2P.getCommand() || command == GroupEventCommand.MSG_GROUP.getCommand()){
+            // todo 聊天消息处理
+        } else {
+            log.debug("msg:{}",msg);
         }
-        log.debug("msg:{}",msg);
     }
 
     private void SetChannelAttr(ChannelHandlerContext ctx, Message msg, String userId) {
