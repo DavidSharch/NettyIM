@@ -13,21 +13,26 @@ import lombok.NoArgsConstructor;
 public class IMServerConfig {
     public TcpConfig IMServer;
 
+
     @Data
     public static class TcpConfig {
         private Integer tcpPort;// tcp 绑定的端口号
         private Integer webSocketPort; // webSocket 绑定的端口号
+        private Boolean enableWebSocket; //是否启用webSocket
         private Integer bossThreadSize; // boss线程 默认=1
         private Integer workThreadSize; //work线程
         private Long heartBeatTime; //心跳超时时间 单位毫秒
         private Integer loginModel;
+        private Integer brokerId;
+        private String logicUrl;
 
         /**
          * redis配置
          */
         private RedisConfig redis;
+//        private Rabbitmq rabbitmq;
+//        private ZkConfig zkConfig;
     }
-
     @Data
     @Builder
     @NoArgsConstructor

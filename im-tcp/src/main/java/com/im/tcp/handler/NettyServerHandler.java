@@ -29,6 +29,18 @@ import java.net.InetAddress;
  */
 @Slf4j
 public class NettyServerHandler extends SimpleChannelInboundHandler<Message> {
+    private Integer brokerId;
+
+    private String logicUrl;
+
+    public NettyServerHandler(Integer brokerId,String logicUrl) {
+        this.brokerId = brokerId;
+//        feignMessageService = Feign.builder()
+//                .encoder(new JacksonEncoder())
+//                .decoder(new JacksonDecoder())
+//                .options(new Request.Options(1000, 3500))//设置超时时间
+//                .target(FeignMessageService.class, logicUrl);
+    }
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, Message msg) throws Exception {
@@ -55,6 +67,7 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<Message> {
         } else if (command == SystemCommand.LOGOUT.getCommand()) {
             SessionSocketHolder.removeUserSession((NioSocketChannel) ctx.channel(), false);
         } else if (command == SystemCommand.PING.getCommand()){
+            // 客户端需要时刻ping，保持长连接，否则心跳到期就会下线操作-->HeartBeatHandler
             ctx.channel().attr(AttributeKey.valueOf(Constants.ReadTime)).set(System.currentTimeMillis());
         }else if(command == MessageCommand.MSG_P2P.getCommand() || command == GroupEventCommand.MSG_GROUP.getCommand()){
             // todo 聊天消息处理
