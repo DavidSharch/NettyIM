@@ -1,0 +1,14 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: im-job
+  kafka:
+    bootstrap-servers: localhost:9092 #这个是你server.properties中配置的
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      group-id: test-consumer-group #这个去config/consumer.properties中查看和修改
