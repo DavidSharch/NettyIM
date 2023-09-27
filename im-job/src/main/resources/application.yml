@@ -12,3 +12,5 @@ spring:
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       group-id: test-consumer-group #这个去config/consumer.properties中查看和修改
+# 监听指定topic
+imBrokerId: 1001

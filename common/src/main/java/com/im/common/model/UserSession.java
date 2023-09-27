@@ -28,8 +28,10 @@ public class UserSession {
      */
     private Integer connectState;
 
+    /**
+     * 用户在哪一个节点上
+     */
     private Integer brokerId;
-
     private String brokerHost;
 
     private String imei;

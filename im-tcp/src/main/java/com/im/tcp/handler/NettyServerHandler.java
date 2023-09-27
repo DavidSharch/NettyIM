@@ -92,12 +92,13 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<Message> {
         userSession.setClientType(msg.getMessageHeader().getClientType());
         userSession.setUserId(userId);
         userSession.setConnectState(ConnectStatusEnum.ONLINE_STATUS.getCode());
-        //userSession.setBrokerId(brokerId);
         userSession.setImei(msg.getMessageHeader().getImei());
         try {
             InetAddress localHost = InetAddress.getLocalHost();
+            // 设置用户所在server
+            userSession.setBrokerId(brokerId);
             userSession.setBrokerHost(localHost.getHostAddress());
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return userSession;

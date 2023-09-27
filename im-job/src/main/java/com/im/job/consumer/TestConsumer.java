@@ -1,6 +1,5 @@
 package com.im.job.consumer;
 
-import com.alibaba.fastjson.JSON;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.annotation.KafkaListener;
 
