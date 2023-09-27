@@ -26,12 +26,9 @@ public class IMServerConfig {
         private Integer brokerId;
         private String logicUrl;
 
-        /**
-         * redis配置
-         */
+        //        private Rabbitmq rabbitmq;
+        private ZkConfig zkConfig;
         private RedisConfig redis;
-//        private Rabbitmq rabbitmq;
-//        private ZkConfig zkConfig;
     }
     @Data
     @Builder
@@ -87,5 +84,18 @@ public class IMServerConfig {
          * 地址
          */
         private String address;
+    }
+
+    @Data
+    public static class ZkConfig {
+        /**
+         * zk连接地址
+         */
+        private String zkAddr;
+
+        /**
+         * zk连接超时时间
+         */
+        private Integer zkConnectTimeOut;
     }
 }

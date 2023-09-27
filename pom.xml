@@ -177,11 +177,11 @@
             </dependency>
 
             <!--  zkClient -->
-<!--            <dependency>-->
-<!--                <groupId>com.github.sgroschupf</groupId>-->
-<!--                <artifactId>zkclient</artifactId>-->
-<!--                <version>${zkClient.version}</version>-->
-<!--            </dependency>-->
+            <dependency>
+                <groupId>com.github.sgroschupf</groupId>
+                <artifactId>zkclient</artifactId>
+                <version>${zkClient.version}</version>
+            </dependency>
 
             <!-- netty -->
             <dependency>
