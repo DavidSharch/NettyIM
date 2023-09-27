@@ -3,6 +3,7 @@ package com.im.service.user.service;
 import com.im.service.user.dao.UserEntity;
 import com.im.service.user.model.req.*;
 import com.im.service.user.model.resp.GetUserInfoResp;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.springframework.http.ResponseEntity;
 
 /**
@@ -19,6 +20,6 @@ public interface UserService {
 
      ResponseEntity modifyUserInfo(ModifyUserInfoReq req);
 
-     ResponseEntity login(LoginReq req);
+     Boolean login(LoginReq req);
 
 }

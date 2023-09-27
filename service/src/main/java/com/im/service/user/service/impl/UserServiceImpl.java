@@ -73,7 +73,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ResponseEntity login(LoginReq req) {
-        return null;
+    public Boolean login(LoginReq req) {
+        return true;
     }
 }

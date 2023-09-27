@@ -10,6 +10,6 @@ import java.util.List;
 
 @Data
 public class ImportUserReq extends RequestBase {
-//    @ApiModelProperty("用户信息")
+    @ApiModelProperty("用户信息")
     private List<UserEntity> userData;
 }

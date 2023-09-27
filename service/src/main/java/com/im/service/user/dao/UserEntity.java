@@ -3,6 +3,7 @@ package com.im.service.user.dao;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -15,8 +16,8 @@ import java.io.Serializable;
 @TableName("im_user_data")
 public class UserEntity implements Serializable {
 
-    // 用户id
     @TableId(type = IdType.AUTO)
+    @ApiModelProperty("用户id")
     private String userId;
 
     // 用户名称
@@ -40,20 +41,19 @@ public class UserEntity implements Serializable {
     // 个性签名
     private String selfSignature;
 
-    // 加好友验证类型（Friend_AllowType） 1需要验证
+    @ApiModelProperty(value = "加好友验证类型,1需要验证", example = "1")
     private Integer friendAllowType;
 
-    // 管理员禁止用户添加加好友：0 未禁用 1 已禁用
+    @ApiModelProperty(value = "管理员禁止用户添加加好友：0 未禁用 1 已禁用", example = "1")
     private Integer disableAddFriend;
 
-    // 禁用标识(0 未禁用 1 已禁用)
+    @ApiModelProperty(value = "禁用标识(0 未禁用 1 已禁用)", example = "1")
     private Integer forbiddenFlag;
 
     // 禁言标识
     private Integer silentFlag;
-    /**
-     * 用户类型 1普通用户 2客服 3机器人
-     */
+
+    @ApiModelProperty(value = "用户类型 1普通用户 2客服 3机器人", example = "1")
     private Integer userType;
 
     private Integer appId;
