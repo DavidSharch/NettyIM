@@ -10,6 +10,7 @@ import com.im.common.enums.command.MessageCommand;
 import com.im.common.enums.command.SystemCommand;
 import com.im.common.model.UserSession;
 import com.im.tcp.message.Message;
+import com.im.tcp.model.UserClientDto;
 import com.im.tcp.pack.LoginPack;
 import com.im.tcp.utils.RedisManager;
 import com.im.tcp.utils.SessionSocketHolder;
@@ -19,6 +20,7 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.util.AttributeKey;
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RMap;
+import org.redisson.api.RTopic;
 import org.redisson.api.RedissonClient;
 
 import java.net.InetAddress;
@@ -63,7 +65,18 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<Message> {
                     (NioSocketChannel) ctx.channel()
             );
 
-            // todo 发布上线消息
+            UserClientDto dto = new UserClientDto();
+            dto.setImei(msg.getMessageHeader().getImei());
+            dto.setUserId(loginPack.getUserId());
+            dto.setClientType(msg.getMessageHeader().getClientType());
+            dto.setAppId(msg.getMessageHeader().getAppId());
+            // todo 发送登录消息
+//            RedissonClient redissonClient = RedisManager.getRedissonClient();
+//            RTopic topic = redissonClient.getTopic(Constants.RedisConstants.UserLoginChannel);
+//            topic.publish(JSONObject.toJSONString(dto));
+
+
+
         } else if (command == SystemCommand.LOGOUT.getCommand()) {
             SessionSocketHolder.removeUserSession((NioSocketChannel) ctx.channel(), false);
         } else if (command == SystemCommand.PING.getCommand()){

@@ -15,7 +15,6 @@
         <module>common</module>
         <module>service</module>
         <module>im-tcp</module>
-        <module>im-job</module>
     </modules>
 
     <parent>

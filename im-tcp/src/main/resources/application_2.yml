@@ -4,7 +4,7 @@ IMServer:
   bossThreadSize: 1
   workThreadSize: 8
   heartBeatTime: 20000 #心跳超时时间 单位毫秒
-  loginModel: 3
+  loginModel: 1 # 登录模式，允许几台设备/web在线
   brokerId: 1002
   redis:
     mode: single # 单机模式：single 哨兵模式：sentinel 集群模式：cluster
